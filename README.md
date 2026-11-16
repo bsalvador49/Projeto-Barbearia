@@ -9,7 +9,7 @@ Sistema desenvolvido para automatizar, organizar e modernizar o atendimento e o 
 O **Connect Barber** é um Projeto Integrador desenvolvido no âmbito acadêmico (UNIEURO) com o objetivo de solucionar os gargalos operacionais gerados por métodos manuais (como agendamentos por telefone e anotações em planilhas ou cadernos)[cite: 1, 2, 3, 115]. 
 
 O projeto contempla duas frentes principais:
-1. **MVP Funcional em Linguagem C:** Protótipo executável via terminal que valida a lógica central de cadastros, validações de segurança e regras de agendamento em memória[cite: 118].
+1. **MVP Funcional em Linguagem C:** Protótipo executável via terminal que valida a lógica central de cadastros, validações de segurança e regras de agendamento em memória.
 2. **Modelagem e Protótipo Visual (Figma):** Especificação completa de requisitos funcionais/não funcionais, diagramas UML, Modelo Entidade-Relacionamento (DER) e telas do sistema desenhadas no Figma[cite: 12, 41, 110, 147].
 
 ---
