@@ -1,59 +1,51 @@
-# 💈 Connect Barber - Sistema de Gestão e Agendamento (Barbearia Trato Fino)
+# 💈 Connect Barber - Sistema de Gestão e Agendamento
 
-Sistema desenvolvido para automatizar e modernizar o atendimento, o controle de agenda e a gestão da **Barbearia Trato Fino** (Ceilândia Norte - Brasília/DF).
+Sistema desenvolvido para automatizar, organizar e modernizar o atendimento e o controle de agenda da **Barbearia Trato Fino**, localizada em Ceilândia Norte, Brasília/DF[cite: 2, 4, 115].
 
 ---
 
 ## 📖 Sobre o Projeto
 
-O **Connect Barber** nasceu como um Projeto Integrador (Engenharia de Software e Programação Estruturada - UNIEURO) para resolver gargalos operacionais causados pela gestão manual em cadernos e planilhas, como conflitos de horários, ausência de histórico de clientes e falhas na comunicação.
+O **Connect Barber** é um Projeto Integrador desenvolvido no âmbito acadêmico (UNIEURO) com o objetivo de solucionar os gargalos operacionais gerados por métodos manuais (como agendamentos por telefone e anotações em planilhas ou cadernos)[cite: 1, 2, 3, 115]. 
 
-O projeto está dividido em duas frentes de maturidade:
-1. **MVP Funcional (Atual):** Protótipo via terminal desenvolvido em **Linguagem C**, utilizando armazenamento em memória (vetores e `structs`) para validar as regras centrais de cadastro, login, bloqueio de conflitos e cancelamento.
-2. **Arquitetura Alvo (Web):** Aplicação completa com interfaces responsivas (Cliente, Barbeiro, Recepcionista e Gerente), banco de dados relacional e integração automatizada via WhatsApp (ChatGuru).
+O projeto contempla duas frentes principais:
+1. **MVP Funcional em Linguagem C:** Protótipo executável via terminal que valida a lógica central de cadastros, validações de segurança e regras de agendamento em memória[cite: 118, 143].
+2. **Modelagem e Protótipo Visual (Figma):** Especificação completa de requisitos funcionais/não funcionais, diagramas UML, Modelo Entidade-Relacionamento (DER) e telas do sistema desenhadas no Figma[cite: 12, 41, 110, 147].
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-### Implementação Atual (MVP)
-* **Linguagem C (Padrão C99/C11):** Core da aplicação estruturada, manipulação de `structs`, vetores globais e controle de fluxo.
-* **Bibliotecas Padrão C:** `stdio.h`, `stdlib.h`, `string.h` (lógica de autenticação, comparação de strings e persistência em memória).
-* **Git & GitHub:** Controle de versão e hospedagem do código-fonte.
-
-### Arquitetura Modelada (Especificação Web)
-* **Front-end:** HTML5, CSS3, JavaScript (Interfaces responsivas e compatíveis com diretrizes de acessibilidade WCAG).
-* **Modelagem & Design:** UML (Diagramas de Casos de Uso), MER/DER (Modelo Entidade-Relacionamento) e Prototipação de Telas (TL001 a TL020).
-* **Integrações Externas:** API **ChatGuru** (envio automatizado de confirmações, lembretes e promoções via WhatsApp/SMS/E-mail).
+* **Linguagem C (Padrão C99/C11):** Desenvolvimento da lógica estruturada do MVP (`codigo.c`)[cite: 118, 143].
+* **Bibliotecas Padrão e Sistema:** `<stdio.h>`, `<stdlib.h>`, `<string.h>`, `<conio.h>`, `<termios.h>` e `<unistd.h>` (para manipulação de menus, vetores, structs e ocultação segura de senhas no terminal)[cite: 143].
+* **Figma:** Ferramenta utilizada para o design de interface e prototipagem das telas do sistema (`TL001` a `TL020`)[cite: 41, 110].
+* **Git & GitHub:** Controle de versão e hospedagem do código-fonte e documentações[cite: 150].
 
 ---
 
-## ✨ Funcionalidades Desenvolvidas
+## ✨ Funcionalidades Desenvolvidas (MVP Atual)
 
-### No Protótipo Atual (`codigo.c`)
-* **Cadastro e Autenticação de Clientes (`RF001` / `RF005`):** Registro em memória com validação de CPF e senha, gerando ID único.
-* **Agendamento com Bloqueio Automático (`RF004`):** Seleção de serviço, barbeiro, data e horário. Valida o horário comercial (**07:00 às 18:00**) e impede sobreposição de horários para o mesmo profissional.
-* **Cancelamento com Regra de Antecedência (`RF006`):** Permite ao cliente visualizar seus agendamentos ativos e cancelar reservas, respeitando a trava de **24 horas de antecedência**.
-* **Listagem de Serviços e Histórico:** Consulta de serviços disponíveis e histórico vinculado ao ID do cliente logado.
+O código atual (`codigo.c`) implementa com robustez as seguintes funcionalidades:
 
-### Mapeadas na Modelagem Completa
-* **Painel do Barbeiro/Recepcionista (`RF009` / `RF010`):** Visualização da agenda diária/semanal, atualização de status (*Confirmado, Em Andamento, Concluído, Cancelado*) e bloqueio manual de horários (almoço/folga).
-* **Gestão Administrativa e Financeira (`UC6`):** Dashboard do gerente com faturamento total, contagem de clientes ativos/inativos, ticket por cliente e exportação de relatórios (PDF/CSV/Excel).
-* **Notificações Automatizadas (`RF011`):** Disparo de protocolos de confirmação e lembretes via ChatGuru.
+* **Segurança na Entrada de Dados:** 
+  * Ocultação de caracteres da senha com asteriscos (`*`) em tempo de digitação, com suporte multiplataforma (Windows e sistemas Unix/Linux/macOS)[cite: 143].
+* **Módulo de Clientes (`RF001`, `RF005`):**
+  * Cadastro completo de clientes (Nome, CPF e Senha) com validação contra campos em branco ou preenchidos apenas com espaços[cite: 143].
+  * **Validação Real de CPF:** Verificação matemática completa dos dígitos verificadores do CPF e bloqueio automático de CPFs duplicados no sistema[cite: 143].
+  * Sistema de Login integrado com verificação de credenciais e redirecionamento dinâmico para o painel do cliente[cite: 143].
+* **Módulo de Agendamento Inteligente (`RF004`):**
+  * **Validação de Data:** Garante o formato correto (`DD/MM/AAAA`), valida anos a partir de 2026, limites de dias por mês e cálculo automático de anos bissextos (`ehBissexto`)[cite: 143].
+  * **Controle de Horário Comercial:** Restringe os agendamentos estritamente ao horário de funcionamento da barbearia (das **07:00 às 18:00**), aceitando intervalos de 30 em 30 minutos[cite: 143].
+  * **Bloqueio Automático de Conflitos:** Varredura em tempo real na base de dados em memória para impedir que múltiplos clientes reservem o mesmo dia e horário[cite: 143].
 
 ---
 
-## ⚙️ Pré-requisitos e Dependências de Execução
+## 📂 Organização do Repositório
 
-Como o MVP atual é desenvolvido em Linguagem C pura, não há dependências de pacotes externos de terceiros, exigindo apenas um ambiente de compilação C:
-
-* **Compilador C:** `GCC` (MinGW no Windows, GCC no Linux ou Clang no macOS).
-* **Terminal / Console:** Prompt de Comando, PowerShell, Bash ou terminal integrado de uma IDE (VS Code, Code::Blocks, Dev-C++).
-* **Git** (opcional, para clonar o repositório).
-
-### Como Compilar e Executar
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/bsalvador49/Projeto-Barbearia.git](https://github.com/bsalvador49/Projeto-Barbearia.git)
-   cd Projeto-Barbearia
+```text
+Projeto-Barbearia/
+├── assets/
+│   └── figma/           # Capturas de tela e fluxos desenhados no Figma
+├── docs/                # Documentação detalhada do projeto e diagramas UML/DER
+├── codigo.c             # Código-fonte principal do MVP em C
+└── README.md            # Documentação técnica do repositório
