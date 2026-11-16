@@ -1,78 +1,59 @@
-<div align="center">
+# 💈 Connect Barber - Sistema de Gestão e Agendamento (Barbearia Trato Fino)
 
-# 💈 Connect Barber
-**Sistema de Gestão Operacional e Agendamento — Barbearia Trato Fino**
-
-![Java](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)
-![CLI](https://img.shields.io/badge/Interface-CLI-4D4D4D?style=for-the-badge&logo=gnubash&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Versão_Alfa-blue?style=for-the-badge)
-
-</div>
+Sistema desenvolvido para automatizar e modernizar o atendimento, o controle de agenda e a gestão da **Barbearia Trato Fino** (Ceilândia Norte - Brasília/DF).
 
 ---
 
 ## 📖 Sobre o Projeto
 
-O **Connect Barber** é uma solução desenvolvida para automatizar e centralizar a rotina operacional da **Barbearia Trato Fino**, eliminando gargalos causados pelo controle manual em papel e planilhas[cite: 2, 17]. 
+O **Connect Barber** nasceu como um Projeto Integrador (Engenharia de Software e Programação Estruturada - UNIEURO) para resolver gargalos operacionais causados pela gestão manual em cadernos e planilhas, como conflitos de horários, ausência de histórico de clientes e falhas na comunicação.
 
-Evoluindo de um protótipo inicial estruturado em linguagem C para uma arquitetura robusta orientada a objetos em **Java** com persistência relacional em **PostgreSQL**, o sistema opera via **Interface de Linha de Comando (CLI)**[cite: 2, 6]. O foco principal é garantir a integridade dos dados, prevenir conflitos de horários em tempo real e oferecer controle financeiro e administrativo eficiente[cite: 2, 3].
+O projeto está dividido em duas frentes de maturidade:
+1. **MVP Funcional (Atual):** Protótipo via terminal desenvolvido em **Linguagem C**, utilizando armazenamento em memória (vetores e `structs`) para validar as regras centrais de cadastro, login, bloqueio de conflitos e cancelamento.
+2. **Arquitetura Alvo (Web):** Aplicação completa com interfaces responsivas (Cliente, Barbeiro, Recepcionista e Gerente), banco de dados relacional e integração automatizada via WhatsApp (ChatGuru).
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-| Categoria | Tecnologia / Padrão | Descrição |
-| :--- | :--- | :--- |
-| **Linguagem** | Java (JDK 17+) | Desenvolvimento baseado no paradigma Orientado a Objetos (POO)[cite: 2]. |
-| **Banco de Dados** | PostgreSQL | SGBD relacional utilizado para persistência segura e controle de concorrência[cite: 2, 6]. |
-| **Persistência** | JDBC (Padrão DAO) | Camada de acesso a dados desacoplada para operações SQL[cite: 3]. |
-| **Interface** | CLI (Console) | Menus textuais interativos executados diretamente no terminal[cite: 6]. |
-| **Segurança** | BCrypt / SHA-256 | Hashing criptográfico com *salt* para proteção das senhas dos usuários[cite: 3, 6]. |
-| **Testes** | JUnit | Testes unitários automatizados para validação das regras de negócio[cite: 3]. |
+### Implementação Atual (MVP)
+* **Linguagem C (Padrão C99/C11):** Core da aplicação estruturada, manipulação de `structs`, vetores globais e controle de fluxo.
+* **Bibliotecas Padrão C:** `stdio.h`, `stdlib.h`, `string.h` (lógica de autenticação, comparação de strings e persistência em memória).
+* **Git & GitHub:** Controle de versão e hospedagem do código-fonte.
+
+### Arquitetura Modelada (Especificação Web)
+* **Front-end:** HTML5, CSS3, JavaScript (Interfaces responsivas e compatíveis com diretrizes de acessibilidade WCAG).
+* **Modelagem & Design:** UML (Diagramas de Casos de Uso), MER/DER (Modelo Entidade-Relacionamento) e Prototipação de Telas (TL001 a TL020).
+* **Integrações Externas:** API **ChatGuru** (envio automatizado de confirmações, lembretes e promoções via WhatsApp/SMS/E-mail).
 
 ---
 
 ## ✨ Funcionalidades Desenvolvidas
 
-### 🔐 Autenticação e Perfis de Acesso
-* Registro e login com validação de credenciais por **CPF e senha**[cite: 4, 8].
-* Redirecionamento dinâmico de menus conforme o nível de permissão: **Cliente**, **Barbeiro/Recepcionista** e **Gerente**[cite: 4, 8, 11].
+### No Protótipo Atual (`codigo.c`)
+* **Cadastro e Autenticação de Clientes (`RF001` / `RF005`):** Registro em memória com validação de CPF e senha, gerando ID único.
+* **Agendamento com Bloqueio Automático (`RF004`):** Seleção de serviço, barbeiro, data e horário. Valida o horário comercial (**07:00 às 18:00**) e impede sobreposição de horários para o mesmo profissional.
+* **Cancelamento com Regra de Antecedência (`RF006`):** Permite ao cliente visualizar seus agendamentos ativos e cancelar reservas, respeitando a trava de **24 horas de antecedência**.
+* **Listagem de Serviços e Histórico:** Consulta de serviços disponíveis e histórico vinculado ao ID do cliente logado.
 
-### ✂️ Catálogo de Serviços
-* Listagem organizada contendo nome do serviço, descrição, valor e tempo de duração estimado em minutos[cite: 4].
-
-### 📅 Gestão de Agendamentos
-* **Marcação Segura:** Verificação automática de disponibilidade no banco de dados, bloqueando horários duplicados para o mesmo barbeiro[cite: 5].
-* **Remarcação e Cancelamento:** Alteração ou cancelamento de reservas com liberação imediata na agenda (respeitando a regra de antecedência mínima de 24 horas)[cite: 5, 21].
-
-### 📋 Controle de Agenda Interna (Equipe)
-* Visualização filtrada por período e por ID do profissional logado[cite: 4, 7].
-* Atualização de status dos atendimentos (`Pendente`, `Confirmado`, `Concluído`, `Cancelado`)[cite: 4, 7].
-
-### 📊 Administração e Relatórios (Gerente)
-* Cadastro, edição e inativação de **barbeiros** e **serviços** no catálogo[cite: 5].
-* Emissão de relatórios financeiros consolidados no terminal baseados nos atendimentos concluídos[cite: 8].
+### Mapeadas na Modelagem Completa
+* **Painel do Barbeiro/Recepcionista (`RF009` / `RF010`):** Visualização da agenda diária/semanal, atualização de status (*Confirmado, Em Andamento, Concluído, Cancelado*) e bloqueio manual de horários (almoço/folga).
+* **Gestão Administrativa e Financeira (`UC6`):** Dashboard do gerente com faturamento total, contagem de clientes ativos/inativos, ticket por cliente e exportação de relatórios (PDF/CSV/Excel).
+* **Notificações Automatizadas (`RF011`):** Disparo de protocolos de confirmação e lembretes via ChatGuru.
 
 ---
 
-## ⚙️ Pré-requisitos
+## ⚙️ Pré-requisitos e Dependências de Execução
 
-Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+Como o MVP atual é desenvolvido em Linguagem C pura, não há dependências de pacotes externos de terceiros, exigindo apenas um ambiente de compilação C:
 
-* **[Java Development Kit (JDK) 17+](https://www.oracle.com/java/technologies/downloads/)**
-* **[PostgreSQL 12+](https://www.postgresql.org/download/)** ativo e em execução
-* **Driver JDBC do PostgreSQL** configurado no *classpath* / gerenciador de dependências do projeto
+* **Compilador C:** `GCC` (MinGW no Windows, GCC no Linux ou Clang no macOS).
+* **Terminal / Console:** Prompt de Comando, PowerShell, Bash ou terminal integrado de uma IDE (VS Code, Code::Blocks, Dev-C++).
+* **Git** (opcional, para clonar o repositório).
 
----
+### Como Compilar e Executar
 
-## 🔧 Variáveis de Ambiente e Configuração
-
-Crie um arquivo `.env` na raiz do projeto (ou configure as variáveis diretamente no sistema operacional / arquivo `application.properties`) com os dados de acesso ao banco:
-
-```env
-# Configurações de Conexão com o Banco de Dados PostgreSQL
-DB_URL=jdbc:postgresql://localhost:5432/connect_barber
-DB_USER=postgres
-DB_PASSWORD=sua_senha_aqui
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/bsalvador49/Projeto-Barbearia.git](https://github.com/bsalvador49/Projeto-Barbearia.git)
+   cd Projeto-Barbearia
