@@ -1,17 +1,78 @@
-Connect BarberSobre o ProjetoO Connect Barber é um sistema desenvolvido para automatizar a gestão operacional da Barbearia Trato Fino, substituindo processos manuais em papel e planilhas por uma solução centralizada. O sistema gerencia o agendamento de horários, o catálogo de serviços, o controle de agenda interna para os barbeiros e recepcionistas, além de relatórios gerenciais para a gerência. Evoluindo de um protótipo inicial estruturado em linguagem C para uma arquitetura orientada a objetos em Java com persistência relacional em PostgreSQL, a aplicação opera via interface de linha de comando (CLI).   Tecnologias UtilizadasLinguagem: Java (Paradigma Orientado a Objetos)   Banco de Dados: PostgreSQL (SGBD Relacional)   Persistência de Dados: JDBC (Data Access Object - DAO)   Interface: CLI (Interface de Linha de Comando baseada em console interativo)   Segurança e Criptografia: Algoritmos de hashing seguro para senhas (BCrypt / SHA-256 com salt)   Testes: JUnit (Testes unitários automatizados)   Funcionalidades DesenvolvidasAutenticação e Cadastro de Usuários: Permite o registro e login diferenciado por perfis de acesso (Cliente, Barbeiro/Recepcionista e Gerente).   Catálogo de Serviços: Consulta pública/autenticada dos serviços disponíveis, contendo nome, descrição, preços e durações estimadas.   Controle de Agendamentos:Realização de novos agendamentos com verificação rigorosa de disponibilidade e prevenção automática de horários duplicados (concorrência).   Remarcação e cancelamento de agendamentos (respeitando regras de antecedência mínima, como 24 horas).   Gestão de Agenda Interna: Permite que barbeiros e recepcionistas consultem a agenda, visualizem horários ocupados/livres e atualizem o status dos atendimentos (Pendente, Confirmado, Concluído, Cancelado).   Gestão Administrativa (Gerente): Cadastro, alteração e inativação de novos serviços e barbeiros, além da emissão de relatórios consolidados de faturamento.   Pré-requisitosPara executar e testar o projeto em seu ambiente local, certifique-se de ter instalado:Java Development Kit (JDK): Versão 17 ou superior.PostgreSQL: SGBD relacional instalado e em execução (versão 12 ou superior recomendada).Driver JDBC do PostgreSQL: Biblioteca para conexão com o banco de dados no projeto Java.Variáveis de Ambiente de ConfiguraçãoAs configurações de conexão com o banco de dados PostgreSQL devem ser definidas no arquivo de configuração do projeto (ex: application.properties ou variáveis de ambiente do sistema):Snippet de códigoDB_URL=jdbc:postgresql://localhost:5432/connect_barber
+<div align="center">
+
+# 💈 Connect Barber
+**Sistema de Gestão Operacional e Agendamento — Barbearia Trato Fino**
+
+![Java](https://img.shields.io/badge/Java-17%2B-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+![CLI](https://img.shields.io/badge/Interface-CLI-4D4D4D?style=for-the-badge&logo=gnubash&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Versão_Alfa-blue?style=for-the-badge)
+
+</div>
+
+---
+
+## 📖 Sobre o Projeto
+
+O **Connect Barber** é uma solução desenvolvida para automatizar e centralizar a rotina operacional da **Barbearia Trato Fino**, eliminando gargalos causados pelo controle manual em papel e planilhas[cite: 2, 17]. 
+
+Evoluindo de um protótipo inicial estruturado em linguagem C para uma arquitetura robusta orientada a objetos em **Java** com persistência relacional em **PostgreSQL**, o sistema opera via **Interface de Linha de Comando (CLI)**[cite: 2, 6]. O foco principal é garantir a integridade dos dados, prevenir conflitos de horários em tempo real e oferecer controle financeiro e administrativo eficiente[cite: 2, 3].
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+| Categoria | Tecnologia / Padrão | Descrição |
+| :--- | :--- | :--- |
+| **Linguagem** | Java (JDK 17+) | Desenvolvimento baseado no paradigma Orientado a Objetos (POO)[cite: 2]. |
+| **Banco de Dados** | PostgreSQL | SGBD relacional utilizado para persistência segura e controle de concorrência[cite: 2, 6]. |
+| **Persistência** | JDBC (Padrão DAO) | Camada de acesso a dados desacoplada para operações SQL[cite: 3]. |
+| **Interface** | CLI (Console) | Menus textuais interativos executados diretamente no terminal[cite: 6]. |
+| **Segurança** | BCrypt / SHA-256 | Hashing criptográfico com *salt* para proteção das senhas dos usuários[cite: 3, 6]. |
+| **Testes** | JUnit | Testes unitários automatizados para validação das regras de negócio[cite: 3]. |
+
+---
+
+## ✨ Funcionalidades Desenvolvidas
+
+### 🔐 Autenticação e Perfis de Acesso
+* Registro e login com validação de credenciais por **CPF e senha**[cite: 4, 8].
+* Redirecionamento dinâmico de menus conforme o nível de permissão: **Cliente**, **Barbeiro/Recepcionista** e **Gerente**[cite: 4, 8, 11].
+
+### ✂️ Catálogo de Serviços
+* Listagem organizada contendo nome do serviço, descrição, valor e tempo de duração estimado em minutos[cite: 4].
+
+### 📅 Gestão de Agendamentos
+* **Marcação Segura:** Verificação automática de disponibilidade no banco de dados, bloqueando horários duplicados para o mesmo barbeiro[cite: 5].
+* **Remarcação e Cancelamento:** Alteração ou cancelamento de reservas com liberação imediata na agenda (respeitando a regra de antecedência mínima de 24 horas)[cite: 5, 21].
+
+### 📋 Controle de Agenda Interna (Equipe)
+* Visualização filtrada por período e por ID do profissional logado[cite: 4, 7].
+* Atualização de status dos atendimentos (`Pendente`, `Confirmado`, `Concluído`, `Cancelado`)[cite: 4, 7].
+
+### 📊 Administração e Relatórios (Gerente)
+* Cadastro, edição e inativação de **barbeiros** e **serviços** no catálogo[cite: 5].
+* Emissão de relatórios financeiros consolidados no terminal baseados nos atendimentos concluídos[cite: 8].
+
+---
+
+## ⚙️ Pré-requisitos
+
+Antes de iniciar, certifique-se de ter as seguintes ferramentas instaladas em sua máquina:
+
+* **[Java Development Kit (JDK) 17+](https://www.oracle.com/java/technologies/downloads/)**
+* **[PostgreSQL 12+](https://www.postgresql.org/download/)** ativo e em execução
+* **Driver JDBC do PostgreSQL** configurado no *classpath* / gerenciador de dependências do projeto
+
+---
+
+## 🔧 Variáveis de Ambiente e Configuração
+
+Crie um arquivo `.env` na raiz do projeto (ou configure as variáveis diretamente no sistema operacional / arquivo `application.properties`) com os dados de acesso ao banco:
+
+```env
+# Configurações de Conexão com o Banco de Dados PostgreSQL
+DB_URL=jdbc:postgresql://localhost:5432/connect_barber
 DB_USER=postgres
 DB_PASSWORD=sua_senha_aqui
-Estrutura das PastasA organização sugerida para o projeto segue o padrão de arquitetura em camadas (DAO, Model, Service e View):Plaintextconnect-barber/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── dao/            # Classes de Acesso a Dados (JDBC / PostgreSQL)
-│   │   │   ├── model/          # Entidades do Domínio (Cliente, Barbeiro, Gerente, Servico, Agendamento)
-│   │   │   ├── service/        # Regras de Negócio e Validações
-│   │   │   └── view/           # Menus interativos e interface de linha de comando (CLI)
-│   │   └── resources/          # Arquivos de configuração e scripts SQL iniciais
-│   └── test/
-│       └── java/               # Testes unitários automatizados (JUnit)
-├── .env                        # Variáveis de ambiente
-└── README.md
-Atualizações FuturasIntegração com Chatbot (Chat Guru): Automatização de confirmações de agendamento, lembretes e avisos via WhatsApp, SMS ou e-mail.   Interface Gráfica e Web: Migração ou expansão da interface CLI atual para uma aplicação Web responsiva ou aplicativo mobile.   Recuperação de Senha Avançada: Implementação de fluxo automatizado para redefinição de senhas via token por e-mail.   Relatórios Avançados: Adição de gráficos comparativos de desempenho e filtros avançados para o painel gerencial. 
