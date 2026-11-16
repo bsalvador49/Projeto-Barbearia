@@ -1,24 +1,24 @@
 # 💈 Connect Barber - Sistema de Gestão e Agendamento
 
-Sistema desenvolvido para automatizar, organizar e modernizar o atendimento e o controle de agenda da **Barbearia Trato Fino**, localizada em Ceilândia Norte, Brasília/DF[cite: 2, 4, 115].
+Sistema desenvolvido para automatizar, organizar e modernizar o atendimento e o controle de agenda da **Barbearia Trato Fino**.
 
 ---
 
 ## 📖 Sobre o Projeto
 
-O **Connect Barber** é um Projeto Integrador desenvolvido no âmbito acadêmico (UNIEURO) com o objetivo de solucionar os gargalos operacionais gerados por métodos manuais (como agendamentos por telefone e anotações em planilhas ou cadernos)[cite: 1, 2, 3, 115]. 
+O **Connect Barber** é um Projeto Integrador desenvolvido no âmbito acadêmico (UNIEURO) com o objetivo de solucionar os gargalos operacionais gerados por métodos manuais (como agendamentos por telefone e anotações em planilhas ou cadernos). 
 
 O projeto contempla duas frentes principais:
 1. **MVP Funcional em Linguagem C:** Protótipo executável via terminal que valida a lógica central de cadastros, validações de segurança e regras de agendamento em memória.
-2. **Modelagem e Protótipo Visual (Figma):** Especificação completa de requisitos funcionais/não funcionais, diagramas UML, Modelo Entidade-Relacionamento (DER) e telas do sistema desenhadas no Figma[cite: 12, 41, 110, 147].
+2. **Modelagem e Protótipo Visual (Figma):** Especificação completa de requisitos funcionais/não funcionais, diagramas UML, Modelo Entidade-Relacionamento (DER) e telas do sistema desenhadas no Figma.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Linguagem C (Padrão C99/C11):** Desenvolvimento da lógica estruturada do MVP (`codigo.c`)[cite: 118].
+- **Linguagem C (Padrão C99/C11):** Desenvolvimento da lógica estruturada do MVP (`codigo.c`).
 - **Bibliotecas Padrão e Sistema:** `<stdio.h>`, `<stdlib.h>`, `<string.h>`, `<conio.h>`, `<termios.h>` e `<unistd.h>` (para manipulação de menus, vetores, structs e ocultação segura de senhas no terminal).
-- **Figma:** Ferramenta utilizada para o design de interface e prototipagem das telas do sistema (`TL001` a `TL020`)[cite: 41, 110].
+- **Figma:** Ferramenta utilizada para o design de interface e prototipagem das telas do sistema (`TL001` a `TL020`).
 - **Git & GitHub:** Controle de versão e hospedagem do código-fonte e documentações.
 
 ---
